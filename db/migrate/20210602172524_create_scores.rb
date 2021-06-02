@@ -1,7 +1,7 @@
-class CreateScore < ActiveRecord::Migration[6.1]
+class CreateScores < ActiveRecord::Migration[6.1]
   def change
     create_table :scores do |t|
-      t.integer :score
+      t.integer :points
       t.integer :destroyed
       t.belongs_to :player, null: false, foreign_key: true
 
