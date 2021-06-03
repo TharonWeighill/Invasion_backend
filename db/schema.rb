@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_195549) do
+ActiveRecord::Schema.define(version: 2021_06_02_172524) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_195549) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer "score"
+    t.integer "points"
     t.integer "destroyed"
     t.integer "player_id", null: false
     t.datetime "created_at", precision: 6, null: false
