@@ -4,8 +4,9 @@ class ScoresController < ApplicationController
   # GET /scores
   def index
     @scores = Score.all
-
-    render json: @scores
+    options = {}
+    options[:include] = [:players]
+    render json: ScoreSerializer.new(@players, options)
   end
 
   # GET /scores/1
