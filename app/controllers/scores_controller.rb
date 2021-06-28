@@ -3,10 +3,8 @@ class ScoresController < ApplicationController
 
   # GET /scores
   def index
-    @scores = Score.all
-    options = {}
-    options[:include] = [:players]
-    render json: ScoreSerializer.new(@players, options)
+    @scores = Score.order(points: :desc).limit(10)
+    render json: @scores, only: [:id, :points], include: {player: { only: [:id, :name]}}
   end
 
   # GET /scores/1
@@ -47,6 +45,6 @@ class ScoresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def score_params
-      params.require(:score).permit(:points, :destroyed, :player_id)
+      params.require(:score).permit(:points, :player_id)
     end
 end
